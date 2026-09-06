@@ -38,24 +38,45 @@ img,video{display:block; max-width:100%}
 .serif{font-family:var(--serif)} .mono{font-family:var(--mono)}
 :focus-visible{outline:3px solid var(--water); outline-offset:2px}
 
-/* ── the split ─────────────────────────────────────────── */
+/* ── hero split (the one place the split stays) ── */
 .row{display:grid; grid-template-columns:1fr}
 .txt{padding:2.4rem 1.35rem}
-.pic{position:relative; background:#14130F; overflow:hidden}
-.pic img,.pic video{width:100%; height:100%; object-fit:cover}
-.pic{aspect-ratio:4/3}
-.pic .cap.dark{color:var(--ink); text-shadow:none}
+.pic{position:relative; background:#14130F; overflow:hidden; aspect-ratio:4/3}
+.pic img{width:100%; height:100%; object-fit:cover}
 .pic .cap{position:absolute; bottom:.7rem; inset-inline-start:.9rem; color:#fff; font-family:var(--mono);
   font-size:.7rem; letter-spacing:.08em; text-shadow:0 1px 8px rgba(0,0,0,.7); direction:ltr}
 @media(min-width:900px){
   .row{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .txt{padding:3.4rem 3.4rem 3.4rem 3rem}
   .pic{aspect-ratio:auto; min-height:100%}
-  .pic img,.pic video{position:absolute; inset:0}
+  .pic img{position:absolute; inset:0}
   .txt > *{max-width:40rem}
 }
 @media(max-width:899px){ .pic{order:-1} }
-.row.solo{grid-template-columns:1fr}
+
+/* ── centred sections (no photo) and half splits (photo that earns its place) ── */
+.center{padding:3rem 1.35rem; background:var(--stone)}
+.center.paper{background:var(--paper)} .center.deep{background:var(--stone-deep)}
+.center .in{max-width:52rem; margin-inline:auto}
+.center .in > p:last-child{margin-bottom:0}
+.num{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; color:var(--leaf); margin:0 0 .8rem}
+.row.half{background:var(--stone)}
+.row.half.paper{background:var(--paper)} .row.half.deep{background:var(--stone-deep)}
+.row.half .txt > p:last-child{margin-bottom:0}
+figcaption{font-family:var(--mono); font-size:.68rem; letter-spacing:.06em; color:var(--muted); margin-top:.5rem; line-height:1.5}
+.exhibit{margin:1.6rem 0 0; max-width:44rem}
+.exhibit img{width:100%; height:auto; border:1px solid var(--rule); background:#fff}
+.wide{margin:0; background:#14130F; position:relative}
+.wide img{width:100%; height:auto; max-height:30rem; object-fit:cover; display:block}
+.wide figcaption{position:absolute; bottom:.8rem; inset-inline-start:1.35rem; color:#fff; text-shadow:0 1px 8px rgba(0,0,0,.75)}
+@media(min-width:900px){
+  .center{padding:4.2rem 3.4rem}
+  .row.half{grid-template-columns:1fr 1fr}
+  .row.half .pic{min-height:38rem}
+  .row.half .txt{padding:4.4rem 4rem; display:flex; flex-direction:column; justify-content:center}
+  .row.half .txt > *{max-width:36rem}
+  .wide figcaption{inset-inline-start:3.4rem}
+}
 
 /* ── top ── */
 .top{display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
@@ -92,10 +113,8 @@ h1{font-family:var(--serif); font-weight:700; font-size:clamp(2.7rem,7.2vw,4.7re
 }
 
 /* ── document sections ── */
-.doc{display:grid; grid-template-columns:auto 1fr; gap:0 1rem; align-items:start}
-.doc .n{font-family:var(--mono); font-size:.78rem; color:var(--leaf); padding-top:.55rem; min-width:2.2rem}
 h2{font-family:var(--serif); font-weight:700; font-size:clamp(1.75rem,4.4vw,2.35rem); line-height:1.15; margin:0 0 .9rem; text-wrap:balance}
-.doc .body > p:last-child{margin-bottom:0}
+.sec .body > p:last-child{margin-bottom:0}
 .small{font-size:.86rem; color:var(--muted)}
 .q{display:block; font-size:.8rem; color:var(--muted); line-height:1.5}
 dl{margin:1.1rem 0 0; display:grid; grid-template-columns:auto 1fr; gap:.55rem 1.4rem; font-size:1rem}
@@ -248,25 +267,22 @@ dd b{font-weight:600}
   </div>
 </div>
 
-<!-- ════ the moment ════ -->
-<div class="row paper">
+<div class="row half paper">
   <div class="txt">
-    <div class="doc"><div class="n">01</div><div class="body">
+<p class="num">01</p>
       <h2>היום שעוד לא קרה</h2>
       <p>שבע בבוקר. כיסא בין שורות האבוקדו, קפה, אוויר קריר. מלמטה עולה קול קבוע של מים — הנהר ער. אחרי הקפה הולכים לאורך השורות, בלי סיבה למהר.</p>
       <p>בצהריים יורדים אל הנהר עצמו, אל בריכה בין סלעים בהירים. נכנסים. קר. נשארים, עד שהאור נעשה נחושת וצל האלונים מתארך.</p>
       <p>היום הזה עוד לא קרה. המקום שלו כבר רשום.</p>
-    </div></div>
   </div>
-  <div class="pic"><img src="media/stones.jpg" alt="מים צלולים בין אבנים לבנות בערוץ הנחל" loading="lazy"><span class="cap">02</span></div>
+  <div class="pic"><img src="media/stones.jpg" alt="מים צלולים בין אבנים לבנות בערוץ הנחל" loading="lazy"><span class="cap">ΡΕΜΑ ΠΕΤΡΕΣ · 02</span></div>
 </div>
-
-<!-- ════ what exactly ════ -->
-<div class="row">
-  <div class="txt">
-    <div class="doc"><div class="n">02</div><div class="body">
+<section class="center "><div class="in">
+<p class="num">02</p>
       <h2>מה בדיוק קונים</h2>
       <p>חלקה Α (אלפא): חלקה אחת, רשומה כנכס נפרד בקדסטר (רשם המקרקעין היווני), בקצה המזרחי של נחלה שחולקה לחמש. גובלת בנהר פטרס בצדה הצפון־מזרחי, ומהדרך הלאומית הישנה יורדת אל המים.</p>
+            <p>את ארבע החלקות השכנות מחזיקות ארבע משפחות: שלוש ישראליות, ומשפחה יוונית מרתימנו. בלי שמות — שכנות טובה מתחילה בפרטיות.</p>
+      <p class="pull" style="margin:.4rem 0 1.4rem">ארבע משפחות כבר עשו בדיוק את זה, יחד, על אותה נחלה.</p>
       <dl>
         <dt>שטח</dt><dd><b>5,259.30 מ״ר</b> — לפי תשריט החלוקה הרשום</dd>
         <dt>זכות בנייה</dt><dd><b>208.67 מ״ר</b> — לפי אותו תשריט</dd>
@@ -282,11 +298,7 @@ dd b{font-weight:600}
         <div class="cr open"><b>בהליך</b><span>אישור תנאי בנייה: המסמך שבו רשות התכנון מאשרת בכתב מה מותר לבנות כאן. הוגש, טרם התקבל.</span></div>
         <div class="cr not"><b>עדיין לא</b><span>היתר בנייה. זה השלב הבא, אחרי האישור, ומגישים אותו על תוכנית בית מסוימת.</span></div>
       </div>
-    </div></div>
-  </div>
-  <div class="pic"><img src="media/riverbank.jpg" alt="גדת הנהר ועצים גבוהים" loading="lazy"><span class="cap">03</span></div>
-</div>
-
+</div></section>
 <!-- ════ where, exactly (map) ════ -->
 <div class="band mapband" id="where">
   <div class="head"><span class="n">מפה</span><h2>איפה זה, בדיוק</h2><span class="cap">הגבול מתוך תשריט החלוקה הרשום</span></div>
@@ -315,25 +327,18 @@ dd b{font-weight:600}
   <p class="small" style="margin:.8rem 0 0; max-width:60ch">הקו הבהיר הוא גבול חלקה Α כפי שנרשם; המסגרת המקווקווית היא אזור הבנייה המסומן בתשריט, להמחשה. המרחקים בקו אווירי; זמני נסיעה טרם אומתו.</p>
 </div>
 
-<!-- ════ what's on it ════ -->
-<div class="row paper">
-  <div class="txt">
-    <div class="doc"><div class="n">03</div><div class="body">
+<section class="center paper"><div class="in">
+<p class="num">03</p>
       <h2>בינתיים, המשאבה עובדת</h2>
       <p>החלקה לא מחכה. כ־120 עצי אבוקדו גדלים בשורות, מושקים במים מהפטרס. מתחתיהם, קרוב לנחל, טרסה של הדרים וצבר. ובקצה התחתון — חורש אלונים צפוף, עם עצים גבוהים שנוגעים במים.</p>
       <p>מוכרים אותה כשהיא עובדת: מים נכנסים, עצים גדלים. ביום הראשון פשוט מצטרפים.</p>
-    </div></div>
-  </div>
-  <div class="pic"><img src="media/orchard-crop.jpg" alt="שורות המטע הצעיר" loading="lazy"><span class="cap">04</span></div>
-</div>
-
-<!-- ════ panorama breath ════ -->
-<div class="pano"><img src="media/orchard-wide.jpg" alt="המטע, ומאחוריו גבעת האלונים. צולם מדרך הגישה." loading="lazy"></div>
-
-<!-- ════ what can be built ════ -->
-<div class="row">
-  <div class="txt">
-    <div class="doc"><div class="n">04</div><div class="body">
+</div></section>
+<figure class="wide">
+  <img src="media/orchard-wide.jpg" alt="המטע, ומאחוריו גבעת האלונים. צולם מדרך הגישה." loading="lazy">
+  <figcaption>המטע, ומאחוריו גבעת האלונים · מדרך הגישה</figcaption>
+</figure>
+<section class="center "><div class="in">
+<p class="num">04</p>
       <h2>קומה אחת, סופיטה, בריכה</h2>
       <p>זכות הבנייה כבר תורגמה לבקשה רשמית שמונחת אצל רשות התכנון. הבקשה היא לאישור תנאי בנייה: מסמך בכתב מהרשות שמתעד מה מותר לבנות כאן ובאיזה היקף.</p>
       <div class="docbox">
@@ -342,15 +347,9 @@ dd b{font-weight:600}
         <div class="src">סופיטה: עליית גג למגורים. מגיש הבקשה: מהנדס אזרחי מוסמך, שמלווה את התיק מהמדידה הראשונה.</div>
       </div>
       <p style="margin-top:1.1rem"><strong>זה עדיין לא היתר בנייה,</strong> וחשוב לנו שזה ייאמר בבירור. זה השלב שקודם לו — והוא בדיוק המסמך שעונה על השאלה הראשונה של כל מי ששוקל קרקע ביוון: מה אפשר לבנות פה.</p>
-    </div></div>
-  </div>
-  <div class="pic"><img src="media/valley.jpg" alt="נוף העמק מהחלקה" loading="lazy"><span class="cap">05</span></div>
-</div>
-
-<!-- ════ legal chain ════ -->
-<div class="row paper">
-  <div class="txt">
-    <div class="doc" id="certainty"><div class="n">05</div><div class="body">
+</div></section>
+<section class="center paper" id="certainty"><div class="in">
+<p class="num">05</p>
       <h2>קנינו. רשמנו. הגשנו.</h2>
       <p>מקום קונים בעיניים, אבל מחזיקים אותו בניירות. מה שנמכר כאן הוא חלקה נפרדת ורשומה, לא חלק בבעלות משותפת. השרשרת המשפטית שלמה, וכל שלב בה נמצא במסמך שאפשר לקרוא.</p>
       <div class="ledger">
@@ -360,27 +359,14 @@ dd b{font-weight:600}
         <div class="lrow"><span class="lyr">2026</span><div><h3>רישום בקדסטר</h3><p>החלוקה נרשמה. חלקה Α היא נכס עצמאי ורשום.</p></div></div>
         <div class="lrow open"><span class="lyr">עכשיו</span><div><h3>בקשה לאישור תנאי בנייה</h3><p>בהליך במערכת e‑adeies. לא היתר — עדיין.</p></div></div>
       </div>
-    </div></div>
-  </div>
-  <div class="pic"><img src="media/drawing.jpg" alt="קטע מתשריט החלוקה הרשמי — חלקה Α, הנהר מסומן בכחול" loading="lazy" style="object-position:center top"><span class="cap dark">DIVISION PLAN · 05.2025</span></div>
-</div>
-
-<!-- ════ neighbours + where ════ -->
-<div class="row solo">
+<figure class="exhibit">
+  <img src="media/plan-crop.jpg" alt="מתוך תשריט החלוקה הרשמי: חלקה Α, השטח וזכות הבנייה" loading="lazy">
+  <figcaption>מתוך תשריט החלוקה הרשמי, 27.5.2025 · חלקה Α · שטח 5.259,30 מ״ר · בנייה מרבית 208,67 מ״ר · הנחל מימין, הדרך למטה</figcaption>
+</figure>
+</div></section>
+<div class="row half deep">
   <div class="txt">
-    <div class="doc"><div class="n">06</div><div class="body">
-      <h2>השכנים</h2>
-      <p>את ארבע החלקות השכנות מחזיקות ארבע משפחות: שלוש ישראליות, ומשפחה יוונית מרתימנו. בלי שמות — שכנות טובה מתחילה בפרטיות.</p>
-      <p class="pull">ארבע משפחות כבר עשו בדיוק את זה, יחד, על אותה נחלה.</p>
-      <p class="note" style="margin-top:1.2rem">המרחקים לים, לאגם ולערים — <a href="#where">במפה</a>.</p>
-    </div></div>
-  </div>
-</div>
-
-<!-- ════ how it works ════ -->
-<div class="row deep solo">
-  <div class="txt">
-    <div class="doc"><div class="n">07</div><div class="body">
+<p class="num">06</p>
       <h2>איך זה עובד</h2>
       <p>קרקע ביוון נשמעת לישראלים כמו הרפתקה. כאן היא הייתה תהליך, ומהתהליך נשארו תיק שלם ושלושה אנשי מקצוע שמכירים את החלקה הזאת: עורך דין, מודד ומהנדס. שלושתם זמינים לקונה.</p>
       <ol class="steps">
@@ -390,10 +376,9 @@ dd b{font-weight:600}
         <li><div><b>חוזה אצל נוטריון ברתימנו.</b><span>כמו שאנחנו קנינו. עלויות ומסים של צד הקונה נפרטים כבר בשיחה הראשונה.</span></div></li>
       </ol>
       <p style="margin-top:1.3rem">מי עונה: המשפחה שקנתה. ההורים, שהחלקה על שמם, והבן, שמנהל את המכירה.</p>
-    </div></div>
   </div>
+  <div class="pic"><img src="media/riverbank.jpg" alt="גדת הנהר ועצי האלון הגבוהים" loading="lazy"><span class="cap">03</span></div>
 </div>
-
 <!-- ════ cta ════ -->
 <div class="cta" id="contact">
   <div class="in">
