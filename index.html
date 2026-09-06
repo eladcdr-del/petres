@@ -100,22 +100,20 @@ h1{font-family:var(--serif); font-weight:700; font-size:clamp(2.7rem,7.2vw,4.7re
   margin:0 0 1.2rem; letter-spacing:-.01em; text-wrap:balance}
 .lede{font-size:1.14rem; line-height:1.6; max-width:34rem; margin-bottom:0}
 .lede b{font-weight:600}
-.keys{display:grid; grid-template-columns:1fr 1fr; margin-top:2rem; background:var(--stone);
+.keys{display:grid; grid-template-columns:repeat(3,1fr); margin-top:2rem; background:var(--stone);
   border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
-.keys > div{padding:.9rem 0 1rem; padding-inline-start:1rem; border-inline-start:1px solid var(--rule)}
-.keys > div:nth-child(2n+1){border-inline-start:0; padding-inline-start:0}
-.keys > div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
-.keys .k{font-size:.76rem; letter-spacing:.05em; color:var(--muted)}
-.keys .v{font-family:var(--serif); font-size:1.7rem; font-weight:500; line-height:1.15; margin-top:.15rem}
+.keys > div{padding:.9rem 0 1rem; padding-inline-start:.8rem; border-inline-start:1px solid var(--rule); min-width:0; display:flex; flex-direction:column; justify-content:flex-end}
+.keys > div:first-child{border-inline-start:0; padding-inline-start:0}
+.keys .k{font-size:.72rem; letter-spacing:.04em; color:var(--muted); line-height:1.4}
+.keys .v{font-family:var(--serif); font-size:1.45rem; font-weight:500; line-height:1.15; margin-top:.2rem; white-space:nowrap}
+@media(min-width:900px){ .keys .k{font-size:.76rem; letter-spacing:.05em} .keys .v{font-size:1.7rem} }
 .keys .v small{font-family:var(--sans); font-size:.86rem; color:var(--muted); font-weight:400; margin-inline-start:.3rem}
-.keys .v a{color:var(--water); text-decoration-color:var(--rule); font-size:1.3rem; white-space:nowrap}
 @media(min-width:900px){
   .hero{overflow:visible}
   .hero .pic{min-height:44rem}
-  .keys{grid-template-columns:repeat(4,1fr); position:relative; z-index:2; max-width:none !important;
-    margin-inline-end:-14rem; padding-inline-end:2rem; box-shadow:0 14px 44px rgba(20,19,15,.18)}
-  .keys > div{padding-inline-start:1.1rem; border-inline-start:1px solid var(--rule) !important; border-bottom:0 !important}
-  .keys > div:first-child{border-inline-start:0 !important; padding-inline-start:0}
+  .keys{grid-template-columns:repeat(3,1fr); position:relative; z-index:2; max-width:none !important;
+    margin-inline-end:-12rem; padding-inline-end:2rem; box-shadow:0 14px 44px rgba(20,19,15,.18)}
+  .keys > div{padding-inline-start:1.1rem}
 }
 
 /* ── document sections ── */
@@ -243,7 +241,6 @@ img{-webkit-user-drag:none}
 .act:hover .arrow{transform:translateX(-5px)}
 .lg-acts a,.btn,.basemap button{transition:background .2s ease, color .2s ease}
 .keys > div{position:relative}
-.keys .v a:hover{text-decoration-color:var(--water)}
 .bar{transform:translateY(110%); transition:transform .38s cubic-bezier(.2,.6,.2,1)}
 .bar.show{transform:none}
 html:not(.js) .bar{transform:none}
@@ -299,7 +296,6 @@ html:not(.js) .bar{transform:none}
       <div><div class="k">שטח רשום</div><div class="v">5,259.30<small>מ״ר</small></div></div>
       <div><div class="k">זכות בנייה · לפי תשריט</div><div class="v">208.67<small>מ״ר</small></div></div>
       <div><div class="k">גבול צפון־מזרח</div><div class="v">נהר פטרס</div></div>
-      <div><div class="k">מחיר</div><div class="v"><a href="#contact">בשיחה הראשונה</a></div></div>
     </div>
   </div>
   <div class="pic">
@@ -431,7 +427,7 @@ html:not(.js) .bar{transform:none}
 
 <div class="fine">
   <p>הדף נכתב מטעם המשפחה שמוכרת את החלקה — משפחה ישראלית מקבוצת הרכישה. העובדות המשפטיות והתכנוניות נשענות על מסמכים; את השטח תיארנו כפי שצילמנו וראינו אותו. מה שעוד אינו ודאי, ובראשו בקשת הבנייה, כתוב כמו שהוא: בקשה בהליך, לא היתר. המרחקים נמדדו בקו אווירי, וכל המסמכים יועמדו לבדיקת עורך דין מטעם הקונה. כתבנו כמו שהיינו רוצים שיכתבו לנו.</p>
-  <p class="mono" dir="ltr" style="text-align:right">35.3163°N · 24.3728°E · Kamanos, Agios Konstantinos, Rethymno, Crete · build 2026-09-06 21:55</p>
+  <p class="mono" dir="ltr" style="text-align:right">35.3163°N · 24.3728°E · Kamanos, Agios Konstantinos, Rethymno, Crete · build 2026-09-06 22:25</p>
 </div>
 
 <div class="bar"><b>חלקה Α</b><span>· נהר פטרס, כרתים</span><a href="https://wa.me/972527987775?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%93%D7%A3%20%D7%A9%D7%9C%20%D7%97%D7%9C%D7%A7%D7%94%20%CE%91%20%D7%A2%D7%9C%20%D7%A0%D7%94%D7%A8%20%D7%A4%D7%98%D7%A8%D7%A1%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93." target="_blank" rel="noopener">וואטסאפ</a></div>
