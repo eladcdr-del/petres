@@ -14,6 +14,8 @@
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="media/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="media/river-portrait.jpg" fetchpriority="high">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -29,7 +31,7 @@
 html{color-scheme:light; scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{transition:none !important} }
 body{margin:0; padding-bottom:3.9rem; background:var(--stone); color:var(--ink);
-  font-family:var(--sans); font-size:17px; line-height:1.75; font-variant-numeric:tabular-nums;
+  font-family:var(--sans); font-size:17.5px; line-height:1.72; font-variant-numeric:tabular-nums; text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased}
 p{margin:0 0 1rem; max-width:58ch}
 a{color:var(--water); text-underline-offset:3px; text-decoration-thickness:1px}
@@ -113,7 +115,7 @@ h1{font-family:var(--serif); font-weight:700; font-size:clamp(2.7rem,7.2vw,4.7re
 }
 
 /* ── document sections ── */
-h2{font-family:var(--serif); font-weight:700; font-size:clamp(1.75rem,4.4vw,2.35rem); line-height:1.15; margin:0 0 .9rem; text-wrap:balance}
+h2{font-family:var(--serif); font-weight:700; font-size:clamp(1.8rem,4.4vw,2.45rem); line-height:1.15; margin:0 0 1rem; text-wrap:balance; letter-spacing:-.005em}
 .sec .body > p:last-child{margin-bottom:0}
 .small{font-size:.86rem; color:var(--muted)}
 .q{display:block; font-size:.8rem; color:var(--muted); line-height:1.5}
@@ -214,6 +216,41 @@ dd b{font-weight:600}
   .legend{border-top:0; border-inline-start:1.5px solid var(--ink); overflow:auto; max-height:36rem}
 }
 
+/* ── motion: reveal on scroll (only when JS is present), hero load sequence ── */
+html.js .rv{opacity:0; transform:translateY(14px); transition:opacity .75s cubic-bezier(.2,.6,.2,1), transform .75s cubic-bezier(.2,.6,.2,1); transition-delay:calc(var(--i,0) * 70ms)}
+html.js .rv.in{opacity:1; transform:none}
+html.js .row.half .pic img,html.js .wide img{transform:scale(1.035); transition:transform 1.6s cubic-bezier(.2,.6,.2,1)}
+html.js .row.half.in .pic img,html.js .wide.in img{transform:none}
+@keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+@keyframes settle{from{transform:scale(1.045)} to{transform:none}}
+html.js .hero .txt > *{animation:rise .8s cubic-bezier(.2,.6,.2,1) both}
+html.js .hero .txt > :nth-child(2){animation-delay:.08s} html.js .hero .txt > :nth-child(3){animation-delay:.16s}
+html.js .hero .txt > :nth-child(4){animation-delay:.24s} html.js .hero .txt > :nth-child(5){animation-delay:.36s}
+html.js .hero .pic img{animation:settle 2s cubic-bezier(.2,.6,.2,1) both}
+@media (prefers-reduced-motion:reduce){
+  html.js .rv{opacity:1; transform:none; transition:none}
+  html.js .row.half .pic img,html.js .wide img,html.js .hero .pic img,html.js .hero .txt > *{animation:none; transform:none; transition:none}
+}
+
+/* ── small nuances ── */
+::selection{background:var(--water); color:#fff}
+img{-webkit-user-drag:none}
+.act .arrow{transition:transform .25s ease}
+.act:hover .arrow{transform:translateX(-5px)}
+.lg-acts a,.btn,.basemap button{transition:background .2s ease, color .2s ease}
+.keys > div{position:relative}
+.keys .v a:hover{text-decoration-color:var(--water)}
+.bar{transform:translateY(110%); transition:transform .38s cubic-bezier(.2,.6,.2,1)}
+.bar.show{transform:none}
+html:not(.js) .bar{transform:none}
+@media print{
+  .bar,.basemap,.map-hint,.leaflet-control-zoom{display:none !important}
+  body{padding-bottom:0; background:#fff}
+  .center,.row.half,.mapband{background:#fff !important; break-inside:avoid}
+  .map{height:24rem}
+  a{color:var(--ink); text-decoration:none}
+}
+
 /* ── cta ── */
 .cta{background:var(--ink); color:var(--stone); padding:3rem 1.35rem}
 .cta .in{max-width:40rem}
@@ -275,7 +312,7 @@ dd b{font-weight:600}
       <p>בצהריים יורדים אל הנהר עצמו, אל בריכה בין סלעים בהירים. נכנסים. קר. נשארים, עד שהאור נעשה נחושת וצל האלונים מתארך.</p>
       <p>היום הזה עוד לא קרה. המקום שלו כבר רשום.</p>
   </div>
-  <div class="pic"><img src="media/corridor.jpg" alt="ערוץ הנהר בין העצים, בריכה שקטה בין סלעים" loading="lazy"><span class="cap">ΡΕΜΑ ΠΕΤΡΕΣ · 02</span></div>
+  <div class="pic"><img src="media/corridor.jpg" alt="ערוץ הנהר בין העצים, בריכה שקטה בין סלעים" loading="lazy" decoding="async"><span class="cap">ΡΕΜΑ ΠΕΤΡΕΣ · 02</span></div>
 </div>
 <section class="center "><div class="in">
 <p class="num">02</p>
@@ -304,7 +341,7 @@ dd b{font-weight:600}
   <div class="head"><span class="n">מפה</span><h2>איפה זה, בדיוק</h2><span class="cap">הגבול מתוך תשריט החלוקה הרשום</span></div>
   <div class="mapwrap">
     <div class="map" id="map">
-      <img class="map-poster" src="media/map-poster.jpg" alt="חלקה Α על תצלום לוויין: הגבול הרשום, הכביש מדרום והנחל ממזרח" loading="lazy">
+      <img class="map-poster" src="media/map-poster.jpg" alt="חלקה Α על תצלום לוויין: הגבול הרשום, הכביש מדרום והנחל ממזרח" loading="lazy" decoding="async">
       <div class="basemap"><button type="button" data-base="sat" class="on">לוויין</button><button type="button" data-base="map">מפה וגבהים</button></div>
       <div class="map-hint">לחצו על המפה כדי להזיז ולהתקרב</div>
     </div>
@@ -334,7 +371,7 @@ dd b{font-weight:600}
       <p>מוכרים אותה כשהיא עובדת: מים נכנסים, עצים גדלים. ביום הראשון פשוט מצטרפים.</p>
 </div></section>
 <figure class="wide">
-  <img src="media/orchard-wide.jpg" alt="המטע, ומאחוריו גבעת האלונים. צולם מדרך הגישה." loading="lazy">
+  <img src="media/orchard-wide.jpg" alt="המטע, ומאחוריו גבעת האלונים. צולם מדרך הגישה." loading="lazy" decoding="async">
   <figcaption>המטע, ומאחוריו גבעת האלונים · מדרך הגישה</figcaption>
 </figure>
 <section class="center "><div class="in">
@@ -373,7 +410,7 @@ dd b{font-weight:600}
       </ol>
       <p style="margin-top:1.3rem">מי עונה: המשפחה שקנתה. ההורים, שהחלקה על שמם, והבן, שמנהל את המכירה.</p>
   </div>
-  <div class="pic"><img src="media/riverbank.jpg" alt="גדת הנהר ועצי האלון הגבוהים" loading="lazy"><span class="cap">03</span></div>
+  <div class="pic"><img src="media/riverbank.jpg" alt="גדת הנהר ועצי האלון הגבוהים" loading="lazy" decoding="async"><span class="cap">03</span></div>
 </div>
 <!-- ════ cta ════ -->
 <div class="cta" id="contact">
@@ -390,12 +427,33 @@ dd b{font-weight:600}
 
 <div class="fine">
   <p>הדף נכתב מטעם המשפחה שמוכרת את החלקה — משפחה ישראלית מקבוצת הרכישה. העובדות המשפטיות והתכנוניות נשענות על מסמכים; את השטח תיארנו כפי שצילמנו וראינו אותו. מה שעוד אינו ודאי, ובראשו בקשת הבנייה, כתוב כמו שהוא: בקשה בהליך, לא היתר. המרחקים נמדדו בקו אווירי, וכל המסמכים יועמדו לבדיקת עורך דין מטעם הקונה. כתבנו כמו שהיינו רוצים שיכתבו לנו.</p>
-  <p class="mono" dir="ltr" style="text-align:right">35.3163°N · 24.3728°E · Kamanos, Agios Konstantinos, Rethymno, Crete · build 2026-09-06 19:45</p>
+  <p class="mono" dir="ltr" style="text-align:right">35.3163°N · 24.3728°E · Kamanos, Agios Konstantinos, Rethymno, Crete · build 2026-09-06 19:54</p>
 </div>
 
 <div class="bar"><b>חלקה Α</b><span>· נהר פטרס, כרתים</span><a href="https://wa.me/972527987775?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%93%D7%A3%20%D7%A9%D7%9C%20%D7%97%D7%9C%D7%A7%D7%94%20%CE%91%20%D7%A2%D7%9C%20%D7%A0%D7%94%D7%A8%20%D7%A4%D7%98%D7%A8%D7%A1%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93." target="_blank" rel="noopener">וואטסאפ</a></div>
 
 <script>
+(function(){
+  /* reveal on scroll — tagged here so that without JS nothing is ever hidden */
+  var groups=['.center .in > *','.row.half .txt > *','.cta .in > *','.mapband .head','.mapband > p','.legend > *','.fine > *'];
+  var els=[]; groups.forEach(function(sel){ var i=0; document.querySelectorAll(sel).forEach(function(e){ e.classList.add('rv'); e.style.setProperty('--i', i++ % 6); els.push(e); }); });
+  document.querySelectorAll('.row.half, .wide').forEach(function(e){ els.push(e); });
+  var vh=window.innerHeight;
+  els.forEach(function(e){ if(e.getBoundingClientRect().top < vh*0.9) e.classList.add('in'); });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }); },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(e){ if(!e.classList.contains('in')) io.observe(e); });
+  } else els.forEach(function(e){ e.classList.add('in'); });
+
+  /* sticky bar: only once the hero is behind you, and not while the CTA is on screen */
+  var bar=document.querySelector('.bar'), hero=document.querySelector('.hero'), cta=document.getElementById('contact');
+  if(bar&&hero){
+    var ctaVisible=false;
+    if('IntersectionObserver' in window && cta){ new IntersectionObserver(function(en){ ctaVisible=en[0].isIntersecting; tick(); },{threshold:.15}).observe(cta); }
+    function tick(){ var past=window.scrollY > hero.offsetHeight*0.75; bar.classList.toggle('show', past && !ctaVisible); }
+    window.addEventListener('scroll', tick, {passive:true}); tick();
+  }
+})();
 (function(){
   var band=document.getElementById('where'), box=document.getElementById('map'); if(!band||!box) return;
   var GJ={"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"name": "plot-A", "area_m2": 5259.3, "source": "Division plan 27.5.2025, EGSA87 grid"}, "geometry": {"type": "Polygon", "coordinates": [[[24.3729792, 35.3159106], [24.3730614, 35.3158582], [24.3730842, 35.3158791], [24.3732024, 35.3159863], [24.3732963, 35.3160321], [24.3733425, 35.3160511], [24.3733894, 35.3161273], [24.3733935, 35.3161473], [24.3733935, 35.3161608], [24.3733552, 35.3162373], [24.3732101, 35.31631], [24.3730575, 35.3163733], [24.3729668, 35.3164132], [24.3729102, 35.3164763], [24.3728701, 35.316529], [24.3728308, 35.316626], [24.3727653, 35.3167212], [24.3727574, 35.3167325], [24.3726662, 35.3167965], [24.3725915, 35.3168694], [24.3724267, 35.316747], [24.3723475, 35.3165637], [24.3725022, 35.3161208], [24.3725431, 35.3161038], [24.372614, 35.3160757], [24.3727314, 35.3160227], [24.3728437, 35.3159739], [24.3729792, 35.3159106]]]}}, {"type": "Feature", "properties": {"name": "building-zone"}, "geometry": {"type": "Polygon", "coordinates": [[[24.3726245, 35.3164925], [24.372739, 35.316446], [24.3727198, 35.3164708], [24.3726794, 35.3165711], [24.3726286, 35.3166448], [24.3725804, 35.3166785], [24.3725684, 35.3166697], [24.3725208, 35.3165594], [24.3725342, 35.3165207], [24.3725535, 35.3165146], [24.3726245, 35.3164925]]]}}, {"type": "Feature", "properties": {"name": "centroid"}, "geometry": {"type": "Point", "coordinates": [24.3728082, 35.3163211]}}]}, POIS=[{"k": "episkopi", "name": "חוף אפיסקופי", "lat": 35.35128, "lon": 24.33618, "note": "שם נחל פטרס נשפך לים", "km": 5.1}, {"k": "argyroupoli", "name": "מעיינות ארגירופולי", "lat": 35.2868, "lon": 24.33214, "note": "מעיינות ופלטנים, טברנות על המים", "km": 4.9}, {"k": "kournas", "name": "אגם קורנאס", "lat": 35.33211, "lon": 24.27553, "note": "האגם הטבעי היחיד בכרתים", "km": 9.0}, {"k": "georgioupoli", "name": "ג׳ורג׳ופולי", "lat": 35.36192, "lon": 24.26138, "note": "עיירת חוף", "km": 11.3}, {"k": "rethymno", "name": "רתימנו", "lat": 35.366, "lon": 24.482, "note": "העיר, הנמל הוונציאני", "km": 11.3}, {"k": "chq", "name": "שדה התעופה חאניה", "lat": 35.5317, "lon": 24.1497, "note": "טיסות ישירות מישראל", "km": 31.3}, {"k": "heraklion", "name": "הרקליון", "lat": 35.3387, "lon": 25.1442, "note": "הבירה", "km": 70.0}], C=[35.316321,24.372808];
