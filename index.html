@@ -184,7 +184,7 @@ dd b{font-weight:600}
 /* ── map band ── */
 .mapband{background:var(--stone-deep); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
 .mapwrap{position:relative; display:grid; grid-template-columns:1fr; gap:0; border:1.5px solid var(--ink); background:var(--paper)}
-.map{position:relative; height:62vh; min-height:22rem; background:#2B2A26; overflow:hidden}
+.map{position:relative; isolation:isolate; height:62vh; min-height:22rem; background:#2B2A26; overflow:hidden}
 .map .leaflet-container{height:100%; width:100%; background:#2B2A26; font-family:var(--sans)}
 .map-poster{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; transition:opacity .6s ease}
 .map.live .map-poster{opacity:0; pointer-events:none}
@@ -271,7 +271,7 @@ html:not(.js) .bar{transform:none}
 @media(min-width:900px){ .fine{padding-inline:3.4rem} }
 
 /* ── sticky bar ── */
-.bar{position:fixed; bottom:0; inset-inline:0; z-index:40; background:var(--ink); color:var(--stone);
+.bar{position:fixed; bottom:0; inset-inline:0; z-index:1200; background:var(--ink); color:var(--stone);
   display:flex; align-items:center; gap:.8rem; padding:.55rem 1.1rem calc(.55rem + env(safe-area-inset-bottom)); font-size:.9rem}
 .bar b{font-weight:700; color:#fff}
 .bar a{margin-inline-start:auto; color:var(--ink); background:var(--stone); padding:.6rem 1.15rem;
@@ -304,7 +304,8 @@ html:not(.js) .bar{transform:none}
   </div>
 </div>
 
-<div class="row half paper">
+<div class="row half paper flip">
+  <div class="pic"><img src="media/corridor.jpg" alt="ערוץ הנהר בין העצים, בריכה שקטה בין סלעים" loading="lazy" decoding="async"><span class="cap">ΡΕΜΑ ΠΕΤΡΕΣ · 02</span></div>
   <div class="txt">
 <p class="num">01</p>
       <h2>היום שעוד לא קרה</h2>
@@ -312,7 +313,6 @@ html:not(.js) .bar{transform:none}
       <p>בצהריים יורדים אל הנהר עצמו, אל בריכה בין סלעים בהירים. נכנסים. קר. נשארים, עד שהאור נעשה נחושת וצל האלונים מתארך.</p>
       <p>היום הזה עוד לא קרה. המקום שלו כבר רשום.</p>
   </div>
-  <div class="pic"><img src="media/corridor.jpg" alt="ערוץ הנהר בין העצים, בריכה שקטה בין סלעים" loading="lazy" decoding="async"><span class="cap">ΡΕΜΑ ΠΕΤΡΕΣ · 02</span></div>
 </div>
 <section class="center "><div class="in">
 <p class="num">02</p>
@@ -427,7 +427,7 @@ html:not(.js) .bar{transform:none}
 
 <div class="fine">
   <p>הדף נכתב מטעם המשפחה שמוכרת את החלקה — משפחה ישראלית מקבוצת הרכישה. העובדות המשפטיות והתכנוניות נשענות על מסמכים; את השטח תיארנו כפי שצילמנו וראינו אותו. מה שעוד אינו ודאי, ובראשו בקשת הבנייה, כתוב כמו שהוא: בקשה בהליך, לא היתר. המרחקים נמדדו בקו אווירי, וכל המסמכים יועמדו לבדיקת עורך דין מטעם הקונה. כתבנו כמו שהיינו רוצים שיכתבו לנו.</p>
-  <p class="mono" dir="ltr" style="text-align:right">35.3163°N · 24.3728°E · Kamanos, Agios Konstantinos, Rethymno, Crete · build 2026-09-06 19:54</p>
+  <p class="mono" dir="ltr" style="text-align:right">35.3163°N · 24.3728°E · Kamanos, Agios Konstantinos, Rethymno, Crete · build 2026-09-06 21:50</p>
 </div>
 
 <div class="bar"><b>חלקה Α</b><span>· נהר פטרס, כרתים</span><a href="https://wa.me/972527987775?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%93%D7%A3%20%D7%A9%D7%9C%20%D7%97%D7%9C%D7%A7%D7%94%20%CE%91%20%D7%A2%D7%9C%20%D7%A0%D7%94%D7%A8%20%D7%A4%D7%98%D7%A8%D7%A1%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93." target="_blank" rel="noopener">וואטסאפ</a></div>
